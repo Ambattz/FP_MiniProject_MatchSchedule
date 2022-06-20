@@ -3,6 +3,7 @@ const Fixture = require("../models/fixture");
 
 const router = new express.Router();
 
+//Get for "/fixtures"
 router.get("/fixtures", (req, res) => {
     var query = req.query;
     var filter = {};
@@ -10,7 +11,7 @@ router.get("/fixtures", (req, res) => {
         if (params == "start_date") {
             filter = {
                 ...filter,
-                date: { "$gte": new Date(query[params]) }
+                date: { ...filter.date, "$gte": new Date(query[params]) }
             };
         }
         if (params == "end_date") {
@@ -29,9 +30,12 @@ router.get("/fixtures", (req, res) => {
     Fixture
         .find(filter, (err, matches) => {
             if (err) {
-                res.status(400).send();
+                res.status(400).send(err);
             }
             Fixture.countDocuments(filter, (err, count) => {
+                if (err) {
+                    res.status(400).send(err);
+                }
                 res.status(200).send({ count: count, records: matches });
             })
         }
@@ -54,9 +58,8 @@ router.post("/fixtures", (req, res) => {
             res.status(200).send(result)
         })
         .catch((err) => {
-            res.status(400).send("Error");
+            res.status(400).send(err);
         });
 });
-
 
 module.exports = router;
