@@ -21,6 +21,7 @@ const Form = ({ title, inputOnChangeHandler, onSaveHandler, error }) => (
           <input
             type={i.input_type}
             name={i.column_name}
+            onChange={inputOnChangeHandler}
           />
         </div>
       )}

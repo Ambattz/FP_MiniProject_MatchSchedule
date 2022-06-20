@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite id="0" name="D:\Study\MERN\FP_MiniProject_MatchSchedule\NodeJS\test\index.test.js" errors="0" package="D:\Study\MERN\FP_MiniProject_MatchSchedule\NodeJS\test\index.test.js" hostname="localhost" tests="7" failures="0" time="3.031" timestamp="2022-06-19T19:19:35">
+  <testsuite id="0" name="D:\Study\MERN\FP_MiniProject_MatchSchedule\NodeJS\test\index.test.js" errors="0" package="D:\Study\MERN\FP_MiniProject_MatchSchedule\NodeJS\test\index.test.js" hostname="localhost" tests="7" failures="0" time="3.908" timestamp="2022-06-20T12:40:32">
     <properties>
     </properties>
     <testcase classname="View all the fixtures" name="View all the fixtures" time="0">

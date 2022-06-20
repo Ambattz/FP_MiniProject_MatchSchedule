@@ -1,5 +1,3 @@
-import Button from "./Button";
-
 // Card component renders each record in "data.records" from the api
 // consists of table, thead, tbody elements along with tr, th, td
 // props:
@@ -21,31 +19,31 @@ const Card = ({
   team2,
   date
 }) => (
-    <div className="card" id={_id}>
-      <div className="card-header">
-        <span>
-          <span className="small-txt">Match </span>
-          {index}
-          <span className="small-txt"> of </span>
-          {count}
-        </span>
-        <span>
-          <span className="small-txt">Venue: </span>
-          {venue}
-        </span>
-      </div>
-      <span id="teams">
-        {team1}
-        <span className="small-txt"> vs </span>
-        {team2}
+  <div className="card" id={_id}>
+    <div className="card-header">
+      <span>
+        <span className="small-txt">Match </span>
+        {index}
+        <span className="small-txt"> of </span>
+        {count}
       </span>
-      <div className="card-footer">
-        <span id="matchDate" className="small-txt">
-          {/* Render the date here in format "Day Mon DD YYYY" (ex: "Sun Jun 23 2021") */}
-          {new Date(date).toDateString()}
-        </span>
-      </div>
+      <span>
+        <span className="small-txt">Venue: </span>
+        {venue}
+      </span>
     </div>
-  );
+    <span id="teams">
+      {team1}
+      <span className="small-txt"> vs </span>
+      {team2}
+    </span>
+    <div className="card-footer">
+      <span id="matchDate" className="small-txt">
+        {/* Render the date here in format "Day Mon DD YYYY" (ex: "Sun Jun 23 2021") */}
+        {new Date(date).toDateString()}
+      </span>
+    </div>
+  </div>
+);
 
 export default Card;

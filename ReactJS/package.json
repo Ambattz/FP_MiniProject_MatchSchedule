@@ -2,6 +2,7 @@
   "name": "match_schedule",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8001/fixtures",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "jest-junit-reporter": "^1.1.0",

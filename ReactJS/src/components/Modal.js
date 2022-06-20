@@ -12,8 +12,7 @@ const Modal = ({ children, show, closeHandler }) => (
           <Button onClick={closeHandler} className="btn-close">&#x2715;</Button>
           {children}
         </div>
-      </div> : null
-    }
+      </div> : null}
   </>
 );
 
