@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite id="0" name="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\Form.test.js" errors="0" package="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\Form.test.js" hostname="localhost" tests="1" failures="0" time="4.128" timestamp="2022-06-20T12:40:41">
+  <testsuite id="0" name="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\Form.test.js" errors="0" package="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\Form.test.js" hostname="localhost" tests="1" failures="0" time="12.873" timestamp="2022-06-22T05:43:48">
     <properties>
     </properties>
     <testcase classname="Form" name="Form renders with all required input elements" time="0">
@@ -8,7 +8,7 @@
     <system-out/>
     <system-err/>
   </testsuite>
-  <testsuite id="1" name="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\List.test.js" errors="0" package="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\List.test.js" hostname="localhost" tests="2" failures="0" time="4.169" timestamp="2022-06-20T12:40:41">
+  <testsuite id="1" name="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\List.test.js" errors="0" package="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\List.test.js" hostname="localhost" tests="2" failures="0" time="12.89" timestamp="2022-06-22T05:43:48">
     <properties>
     </properties>
     <testcase classname="List" name="renders List component" time="0">
@@ -18,7 +18,7 @@
     <system-out/>
     <system-err/>
   </testsuite>
-  <testsuite id="2" name="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\App.test.js" errors="0" package="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\App.test.js" hostname="localhost" tests="10" failures="0" time="4.287" timestamp="2022-06-20T12:40:41">
+  <testsuite id="2" name="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\App.test.js" errors="0" package="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\App.test.js" hostname="localhost" tests="10" failures="0" time="12.967" timestamp="2022-06-22T05:43:48">
     <properties>
     </properties>
     <testcase classname="App" name="renders app component" time="0">

@@ -3,64 +3,46 @@ const Fixture = require("../models/fixture");
 
 const router = new express.Router();
 
+// Your code goes here
+// Write a route to get fetch the matches i.e., GET /fixtures
+// You should also implement below filters
+//   * filter to list matches that will be held between given start and end date
+//   * filter for venue
 //Get for "/fixtures"
 router.get("/fixtures", (req, res) => {
     var query = req.query;
     var filter = {};
-    for (const params in query) {
-        if (params == "start_date") {
-            filter = {
-                ...filter,
-                date: { ...filter.date, "$gte": new Date(query[params]) }
-            };
-        }
-        if (params == "end_date") {
-            filter = {
-                ...filter,
-                date: { ...filter.date, "$lte": new Date(query[params]) }
-            };
-        }
-        if (params === "venue") {
-            filter = {
-                ...filter,
-                venue: query[params]
-            }
-        }
+    if (query.hasOwnProperty("venue")) {
+        filter = { ...filter, venue: query["venue"] }
     }
-    Fixture
-        .find(filter, (err, matches) => {
-            if (err) {
-                res.status(400).send(err);
-            }
-            Fixture.countDocuments(filter, (err, count) => {
-                if (err) {
-                    res.status(400).send(err);
-                }
-                res.status(200).send({ count: count, records: matches });
-            })
+    if (query.hasOwnProperty("start_date")) {
+        filter = { ...filter, date: { ...filter.date, "$gte": query["start_date"] } }
+    }
+    if (query.hasOwnProperty("end_date")) {
+        filter = { ...filter, date: { ...filter.date, "$lte": query["end_date"] } }
+    }
+    Fixture.find(filter, (error, data) => {
+        if (error) {
+            res.status(400).send(error);
         }
-        );
-
-
+        res.status(200).json({ count: data.length, records: data });
+    })
 });
 
+// Write a route to create a match fixture i.e., POST /fixtures
+// POST route will take all of these below params
+//   * team1
+//   * team2
+//   * venue
+//   * date
 //Post for "/fixtures"
 router.post("/fixtures", (req, res) => {
-    const newMatch = new Fixture({
-        team1: req.body.team1,
-        team2: req.body.team2,
-        venue: req.body.venue,
-        date: req.body.date
-    })
+    const { team1, team2, venue, date } = req.body;
+    const newMatch = new Fixture({ team1, team2, venue, date });
     newMatch
         .save()
-        .then((result) => {
-            res.status(200).send(result)
-        })
-        .catch((err) => {
-            // console.log(err.message);
-            res.status(400).send(err);
-        });
+        .then((data) => { res.status(200).json(data) })
+        .catch((error) => { res.status(400).send(error); });
 });
 
 module.exports = router;

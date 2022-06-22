@@ -24,19 +24,18 @@ class App extends Component {
   // Function to Show the Modal component
   showModalHandler = () => {
     // Your code goes here
-    this.setState({ showModal: !this.state.showModal });
+    this.setState({ showModal: true });
   }
 
   // Function to Hide the Modal component
   closeModalHandler = () => {
     // Your code goes here
     this.setState({
-      showModal: !this.state.showModal,
+      error: undefined,
+      showModal: false,
       formValues: {},
-      formError: undefined,
-      error: undefined
+      formError: undefined
     });
-
   }
 
   // Handles all input entered in the form component
@@ -57,38 +56,30 @@ class App extends Component {
     // Fill up the code required for posting data to backend
     const fetchData = await fetch(NODE_APP_URL);
     const data = await fetchData.json();
-    this.setState({ data: data })
+    this.setState({ data });
   };
 
   // SubmitHandler should be used to create a record i.e., to execute post request to backend
   // On success of post request close modal and fetch call fetchData method again.
   // On Error set the error message in the banner.
-  submitHandler = async (e) => {
+  submitHandler = (e) => {
     e.preventDefault();
     var { formValues } = this.state;
-    var requestOption = {
-      method: 'post',
+
+    fetch(NODE_APP_URL, {
+      // Your code goes here
+      // Fill up the params required for posting data to backend
+      method: "post",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formValues)
-    };
-
-    // Your code goes here
-    // Fill up the params required for posting data to backend
-    await fetch(NODE_APP_URL, requestOption)
-      .then(async (res) => {
-        if (res.status === 200) {
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.error) this.setState({ formError: res.error.message });
+        else {
           this.fetchData();
           this.closeModalHandler();
         }
-        else {
-          const response = await res.json();
-
-          this.setState({ formError: response.message });
-        }
-      })
-      .catch((error) => {
-
-        this.setState({ error: error });
       });
   }
 
@@ -105,7 +96,7 @@ class App extends Component {
           <div className="footer-controls">
             {/* Your code goes here */}
             {/* Render a Button that will display the Modal */}
-            <Button onClick={this.showModalHandler} children="Add" className="success"></Button>
+            <Button onClick={this.showModalHandler} className="success">Add</Button>
           </div>
 
         </div>

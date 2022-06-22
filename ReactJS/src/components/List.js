@@ -7,16 +7,7 @@ const List = ({ data }) => (
     {/* Your code goes here */}
     {/* Render the Card with required props here */}
     {data.records?.map((match, index) => (
-      <Card
-        key={index}
-        _id={match._id}
-        index={index + 1}
-        count={data.count}
-        venue={match.venue}
-        team1={match.team1}
-        team2={match.team2}
-        date={match.date}
-      ></Card>
+      <Card key={index} index={index + 1} count={data.count} {...match}></Card>
     ))}
   </div>) : null
 );
