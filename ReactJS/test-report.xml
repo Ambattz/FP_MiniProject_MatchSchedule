@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite id="0" name="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\Form.test.js" errors="0" package="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\Form.test.js" hostname="localhost" tests="1" failures="0" time="12.873" timestamp="2022-06-22T05:43:48">
+  <testsuite id="0" name="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\Form.test.js" errors="0" package="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\Form.test.js" hostname="localhost" tests="1" failures="0" time="1.969" timestamp="2022-06-22T06:56:30">
     <properties>
     </properties>
     <testcase classname="Form" name="Form renders with all required input elements" time="0">
@@ -8,17 +8,106 @@
     <system-out/>
     <system-err/>
   </testsuite>
-  <testsuite id="1" name="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\List.test.js" errors="0" package="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\List.test.js" hostname="localhost" tests="2" failures="0" time="12.89" timestamp="2022-06-22T05:43:48">
+  <testsuite id="1" name="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\List.test.js" errors="0" package="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\List.test.js" hostname="localhost" tests="2" failures="1" time="2.052" timestamp="2022-06-22T06:56:30">
     <properties>
     </properties>
     <testcase classname="List" name="renders List component" time="0">
+      <failure message="Error: [2mexpect([22m[38;2;0;95;95m[48;2;215;255;255mreceived[49m[39m[2m).[22mtoMatchSnapshot[2m()[22m
+
+Snapshot name: `List renders List component 1`
+
+[38;2;128;0;128m[48;2;255;215;255m- Snapshot  -  0[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+ Received  + 24[49m[39m
+
+[33m@@ -49,10 +49,16 @@[39m
+[2m          className=&quot;small-txt&quot;[22m
+[2m          id=&quot;matchDate&quot;[22m
+[2m        &gt;[22m
+[2m          Sun May 23 2021[22m
+[2m        &lt;/span&gt;[22m
+[38;2;0;95;95m[48;2;215;255;255m+       &lt;button[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+         className=&quot;btn-delete&quot;[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+         onClick={[Function]}[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+       &gt;[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+         Delete[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+       &lt;/button&gt;[49m[39m
+[2m      &lt;/div&gt;[22m
+[2m    &lt;/div&gt;[22m
+[2m    &lt;div[22m
+[2m      className=&quot;card&quot;[22m
+[2m      id=&quot;5f5b0c42ccf6cf072812d952&quot;[22m
+[33m@@ -101,10 +107,16 @@[39m
+[2m          className=&quot;small-txt&quot;[22m
+[2m          id=&quot;matchDate&quot;[22m
+[2m        &gt;[22m
+[2m          Mon May 24 2021[22m
+[2m        &lt;/span&gt;[22m
+[38;2;0;95;95m[48;2;215;255;255m+       &lt;button[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+         className=&quot;btn-delete&quot;[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+         onClick={[Function]}[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+       &gt;[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+         Delete[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+       &lt;/button&gt;[49m[39m
+[2m      &lt;/div&gt;[22m
+[2m    &lt;/div&gt;[22m
+[2m    &lt;div[22m
+[2m      className=&quot;card&quot;[22m
+[2m      id=&quot;5f5b0c42ccf6cf072812d953&quot;[22m
+[33m@@ -153,10 +165,16 @@[39m
+[2m          className=&quot;small-txt&quot;[22m
+[2m          id=&quot;matchDate&quot;[22m
+[2m        &gt;[22m
+[2m          Wed May 26 2021[22m
+[2m        &lt;/span&gt;[22m
+[38;2;0;95;95m[48;2;215;255;255m+       &lt;button[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+         className=&quot;btn-delete&quot;[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+         onClick={[Function]}[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+       &gt;[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+         Delete[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+       &lt;/button&gt;[49m[39m
+[2m      &lt;/div&gt;[22m
+[2m    &lt;/div&gt;[22m
+[2m    &lt;div[22m
+[2m      className=&quot;card&quot;[22m
+[2m      id=&quot;5f5b0c42ccf6cf072812d954&quot;[22m
+[33m@@ -205,8 +223,14 @@[39m
+[2m          className=&quot;small-txt&quot;[22m
+[2m          id=&quot;matchDate&quot;[22m
+[2m        &gt;[22m
+[2m          Fri May 28 2021[22m
+[2m        &lt;/span&gt;[22m
+[38;2;0;95;95m[48;2;215;255;255m+       &lt;button[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+         className=&quot;btn-delete&quot;[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+         onClick={[Function]}[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+       &gt;[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+         Delete[49m[39m
+[38;2;0;95;95m[48;2;215;255;255m+       &lt;/button&gt;[49m[39m
+[2m      &lt;/div&gt;[22m
+[2m    &lt;/div&gt;[22m
+[2m  &lt;/div&gt;[22m
+    at Object.&lt;anonymous&gt; (D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\List.test.js:8:32)
+    at Promise.then.completed (D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\node_modules\jest-circus\build\utils.js:276:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\node_modules\jest-circus\build\utils.js:216:10)
+    at _callCircusTest (D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\node_modules\jest-circus\build\run.js:212:40)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at _runTest (D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\node_modules\jest-circus\build\run.js:149:3)
+    at _runTestsForDescribeBlock (D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\node_modules\jest-circus\build\run.js:63:9)
+    at _runTestsForDescribeBlock (D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\node_modules\jest-circus\build\run.js:57:9)
+    at run (D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\node_modules\jest-circus\build\run.js:25:3)
+    at runAndTransformResultsToJestFormat (D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:176:21)
+    at jestAdapter (D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:109:19)
+    at runTestInternal (D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\node_modules\jest-runner\build\runTest.js:380:16)
+    at runTest (D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\node_modules\jest-runner\build\runTest.js:472:34)
+    at Object.worker (D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\node_modules\jest-runner\build\testWorker.js:133:12)" type="AssertionError">
+      </failure>
     </testcase>
     <testcase classname="List" name="renders List with data" time="0">
     </testcase>
     <system-out/>
     <system-err/>
   </testsuite>
-  <testsuite id="2" name="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\App.test.js" errors="0" package="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\App.test.js" hostname="localhost" tests="10" failures="0" time="12.967" timestamp="2022-06-22T05:43:48">
+  <testsuite id="2" name="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\App.test.js" errors="0" package="D:\Study\MERN\FP_MiniProject_MatchSchedule\ReactJS\src\tests\App.test.js" hostname="localhost" tests="10" failures="0" time="4.022" timestamp="2022-06-22T06:56:30">
     <properties>
     </properties>
     <testcase classname="App" name="renders app component" time="0">

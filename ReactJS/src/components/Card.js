@@ -10,6 +10,8 @@
 //   team2: team2 key from the api
 //   date: date key from the api. Make sure to render it in format "Day Mon DD YYYY" ex: "Sun Jun 23 2021"
 
+import Button from "./Button";
+
 const Card = ({
   _id,
   index,
@@ -17,7 +19,8 @@ const Card = ({
   venue,
   team1,
   team2,
-  date
+  date,
+  onDeleteHandler
 }) => (
   <div className="card" id={_id}>
     <div className="card-header">
@@ -42,6 +45,7 @@ const Card = ({
         {/* Render the date here in format "Day Mon DD YYYY" (ex: "Sun Jun 23 2021") */}
         {new Date(date).toDateString()}
       </span>
+      <Button className="btn-delete" onClick={() => onDeleteHandler(_id)}>Delete</Button>
     </div>
   </div>
 );

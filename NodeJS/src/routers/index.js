@@ -45,4 +45,14 @@ router.post("/fixtures", (req, res) => {
         .catch((error) => { res.status(400).send(error); });
 });
 
+router.delete("/fixtures/:id", (req, res) => {
+    var filter = { _id: req.params.id };
+    Fixture.deleteOne(filter, (error, data) => {
+        if (error) {
+            res.status(400).send(error);
+        }
+        res.status(200).json({ data: data, message: "Deleted Succssfully" });
+    })
+})
+
 module.exports = router;

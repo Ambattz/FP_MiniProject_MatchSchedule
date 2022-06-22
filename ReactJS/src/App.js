@@ -3,7 +3,7 @@ import { name } from "../package.json";
 import { List, Modal, Button, Error, Form } from "./components";
 
 // Assign the backend base url here
-export const NODE_APP_URL = "http://localhost:8001/fixtures";
+export const NODE_APP_URL = "http://localhost:8001/fixtures/";
 
 class App extends Component {
   constructor(props) {
@@ -46,6 +46,23 @@ class App extends Component {
     let { formValues } = this.state;
     formValues = { ...formValues, [name]: type === "number" ? parseInt(value) : value };
     this.setState({ formValues });
+  }
+
+  deleteHandler = (id) => {
+    var URL = NODE_APP_URL + id;
+    console.log(URL);
+    fetch(URL, {
+      method: "delete",
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.error) this.setState({ error: res.error.message });
+        else {
+          this.setState({ error: res.message })
+          this.fetchData();
+        }
+      });
   }
 
   // Fetch data from the api
@@ -91,7 +108,7 @@ class App extends Component {
         <div className="app-body">
           <h2 className="app-title">{name.replace(/_/g, ' ')}</h2>
           <Error message={error} />
-          <List data={data} />
+          <List data={data} onDeleteHandler={(id) => this.deleteHandler(id)} />
 
           <div className="footer-controls">
             {/* Your code goes here */}
