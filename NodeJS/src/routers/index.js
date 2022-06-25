@@ -9,7 +9,7 @@ const router = new express.Router();
 //   * filter to list matches that will be held between given start and end date
 //   * filter for venue
 //Get for "/fixtures"
-router.get("/fixtures", (req, res) => {
+router.get("/fixtures", async (req, res) => {
     var query = req.query;
     var filter = {};
     if (query.hasOwnProperty("venue")) {
@@ -21,13 +21,13 @@ router.get("/fixtures", (req, res) => {
     if (query.hasOwnProperty("end_date")) {
         filter = { ...filter, date: { ...filter.date, "$lte": query["end_date"] } }
     }
-    Fixture.find(filter, (error, data) => {
-        if (error) {
-            res.status(400).send(error);
-        }
-        res.status(200).json({ count: data.length, records: data });
-    })
-});
+    try {
+        const fixtures = await Fixture.find(filter);
+        res.status(200).json({ count: fixtures.length, records: fixtures });
+    } catch (error) {
+        res.status(400).send(error);
+    }
+})
 
 // Write a route to create a match fixture i.e., POST /fixtures
 // POST route will take all of these below params
@@ -36,23 +36,37 @@ router.get("/fixtures", (req, res) => {
 //   * venue
 //   * date
 //Post for "/fixtures"
-router.post("/fixtures", (req, res) => {
-    const { team1, team2, venue, date } = req.body;
-    const newMatch = new Fixture({ team1, team2, venue, date });
-    newMatch
-        .save()
-        .then((data) => { res.status(200).json(data) })
-        .catch((error) => { res.status(400).send(error); });
+router.post("/fixtures", async (req, res) => {
+    try {
+        const { team1, team2, venue, date } = req.body;
+        const newMatch = new Fixture({ team1, team2, venue, date });
+        const response = await newMatch.save();
+        res.status(200).send(response);
+    } catch (error) {
+        res.status(400).send(error);
+    }
 });
 
-router.delete("/fixtures/:id", (req, res) => {
+//Delete for "/fixtures"
+router.delete("/fixtures/:id", async (req, res) => {
     var filter = { _id: req.params.id };
-    Fixture.deleteOne(filter, (error, data) => {
-        if (error) {
-            res.status(400).send(error);
-        }
-        res.status(200).json({ data: data, message: "Deleted Succssfully" });
-    })
+    try {
+        const response = await Fixture.deleteOne(filter);
+        res.status(200).json({ ...response, message: "Delete Successful" });
+    } catch (error) {
+        res.status(400).send({ ...error, message: "Delete Unsuccessful" });
+    }
+})
+
+//Patch for "/fixtures"
+router.patch("/fixtures/:id", async (req, res) => {
+    var filter = { _id: req.params.id };
+    try {
+        const response = await Fixture.findOneAndUpdate(filter, req.body);
+        res.status(200).json({ ...response, message: "Update Successful" });
+    } catch (error) {
+        res.status(400).send({ ...error, message: "Update Unsuccessful" });
+    }
 })
 
 module.exports = router;

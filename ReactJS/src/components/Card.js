@@ -20,6 +20,7 @@ const Card = ({
   team1,
   team2,
   date,
+  onEditHandler,
   onDeleteHandler
 }) => (
   <div className="card" id={_id}>
@@ -45,7 +46,10 @@ const Card = ({
         {/* Render the date here in format "Day Mon DD YYYY" (ex: "Sun Jun 23 2021") */}
         {new Date(date).toDateString()}
       </span>
+      <Button className="btn-delete" onClick={() => onEditHandler(_id)}>Edit</Button>
       <Button className="btn-delete" onClick={() => onDeleteHandler(_id)}>Delete</Button>
+      <span>
+      </span>
     </div>
   </div>
 );

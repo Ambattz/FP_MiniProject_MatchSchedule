@@ -48,21 +48,49 @@ class App extends Component {
     this.setState({ formValues });
   }
 
+  EditHandler = (id) => {
+    var URL = NODE_APP_URL + id;
+    try {
+      fetch(URL, {
+        method: "patch",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ Venue: "Kozhencherry" })
+      })
+        .then((response) => response.json())
+        .then((res) => {
+          this.setState({ error: res.message });
+          if (!res.ok) {
+            return res.message;
+          }
+          else {
+            this.fetchData();
+          }
+        })
+    } catch (error) {
+      this.setState({ error });
+    }
+  }
+
   deleteHandler = (id) => {
     var URL = NODE_APP_URL + id;
-    console.log(URL);
-    fetch(URL, {
-      method: "delete",
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then((response) => response.json())
-      .then((res) => {
-        if (res.error) this.setState({ error: res.error.message });
-        else {
-          this.setState({ error: res.message })
-          this.fetchData();
-        }
-      });
+    try {
+      fetch(URL, {
+        method: "delete",
+        headers: { 'Content-Type': 'application/json' }
+      })
+        .then((response) => response.json())
+        .then((res) => {
+          this.setState({ error: res.message });
+          if (!res.ok) {
+            return res.message
+          }
+          else {
+            this.fetchData();
+          }
+        });
+    } catch (error) {
+      this.setState({ error })
+    }
   }
 
   // Fetch data from the api
@@ -71,9 +99,13 @@ class App extends Component {
   fetchData = async () => {
     // Your code goes here
     // Fill up the code required for posting data to backend
-    const fetchData = await fetch(NODE_APP_URL);
-    const data = await fetchData.json();
-    this.setState({ data });
+    try {
+      const fetchData = await fetch(NODE_APP_URL);
+      const data = await fetchData.json();
+      this.setState({ data });
+    } catch (error) {
+      this.setState({ error });
+    }
   };
 
   // SubmitHandler should be used to create a record i.e., to execute post request to backend
@@ -82,22 +114,28 @@ class App extends Component {
   submitHandler = (e) => {
     e.preventDefault();
     var { formValues } = this.state;
-
-    fetch(NODE_APP_URL, {
-      // Your code goes here
-      // Fill up the params required for posting data to backend
-      method: "post",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formValues)
-    })
-      .then((response) => response.json())
-      .then((res) => {
-        if (res.error) this.setState({ formError: res.error.message });
-        else {
-          this.fetchData();
-          this.closeModalHandler();
-        }
-      });
+    try {
+      fetch(NODE_APP_URL, {
+        // Your code goes here
+        // Fill up the params required for posting data to backend
+        method: "post",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formValues)
+      })
+        .then((res) => {
+          if (!res.ok) {
+            res = res.json();
+            this.setState({ formError: res.message })
+            return res.message;
+          }
+          else {
+            this.fetchData();
+            this.closeModalHandler();
+          }
+        })
+    } catch (error) {
+      this.setState({ formError: error })
+    }
   }
 
   render() {
@@ -108,7 +146,7 @@ class App extends Component {
         <div className="app-body">
           <h2 className="app-title">{name.replace(/_/g, ' ')}</h2>
           <Error message={error} />
-          <List data={data} onDeleteHandler={(id) => this.deleteHandler(id)} />
+          <List data={data} onEditHandler={(id) => this.EditHandler(id)} onDeleteHandler={(id) => this.deleteHandler(id)} />
 
           <div className="footer-controls">
             {/* Your code goes here */}
